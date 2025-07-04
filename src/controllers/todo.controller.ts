@@ -5,7 +5,8 @@ import { AuthRequest } from "../middlewares/auth.middleware";
 
 export const getTodos = async (req: AuthRequest, res: Response, next: NextFunction) => {
   const userId = req.userId;
-  const todos = await Todo.find({ user: userId });
+  // const todos = await Todo.find({ user: userId });
+  const todos = await Todo.find({ user: userId }).populate('user');
   res.json(todos);
 };
 
