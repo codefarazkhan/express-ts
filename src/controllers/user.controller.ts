@@ -181,3 +181,13 @@ export const login = async (
     });
   }
 };
+
+export const getUserByToken = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const userId = req.userId;
+  const user = await User.findById(userId);
+  res.json(user);
+};
